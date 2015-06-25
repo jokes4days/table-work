@@ -1,6 +1,6 @@
 <html>
 	<body>
-		<table>
+		<table id="red-cone">
 		</table>
 		<table id="yellow-cone">
 			<thead>
@@ -15,30 +15,26 @@
 			<tbody>
 			</tbody>
 		</table>
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.js"></script>
 		<script type="text/javascript">
-			function populateTable(tableId, population) {
-				var popTable = document.getElementById(tableId);
-				var popTbody = popTable.getElementsByTagName("tbody");
-				
-				if (popTbody.length < 1) {
-					var aTbody = popTable.createElement("tbody");
-					popTbody.push(aTbody);
-				}
-
-				// We will only add things to the first one for now
-				// for i=0; i<population; ++i; { add sequential data }
-				var trE;
-				var tdC;
-				for (var i = 0; i < population; ++i) {
-					trE = document.createElement("tr");
-					for (var j = 0; j < 5; ++j) {
-						tdC = document.createElement("td");
-						tdC.textContent = Math.floor(Math.random()  * (7 - 1)) + 1;		
-						trE.appendChild(tdC);
-						popTbody[0]
-					}
-				}
+			var tbody = $("table[id='yellow-cone'] > tbody:first-of-type");
+			if (tbody == null) {
+				$("table[id='yellow-cone']").append("<tbody></tbody>");
+				tbody = $("table[id='yellow-cone'] > tbody:first-of-type");	
 			}
+
+			var tmp;
+			var idname;
+			for (var i = 0; i < 10; ++i) {
+				tmp = '<tr>';
+				for (var j = 0; j < 5; ++j) {
+				  idname = 'r-' + i + '-c-' + j;
+					tmp = tmp + '<td id="' + idname + '" name="' + idname + '"> Row ' + i + ', Col ' + j + '</td>';	
+				}
+				tmp = tmp + '</tr>';
+				tbody.append(tmp);
+			}
+			
 		</script>
 	</body>
 </html>
