@@ -1,4 +1,44 @@
 <html>
 	<body>
+		<table>
+		</table>
+		<table id="yellow-cone">
+			<thead>
+				<tr>
+					<td>A</td>
+					<td>B</td>
+					<td>C</td>
+					<td>D</td>
+					<td>E</td>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+		<script type="text/javascript">
+			function populateTable(tableId, population) {
+				var popTable = document.getElementById(tableId);
+				var popTbody = popTable.getElementsByTagName("tbody");
+				
+				if (popTbody.length < 1) {
+					var aTbody = popTable.createElement("tbody");
+					popTbody.push(aTbody);
+				}
+
+				// We will only add things to the first one for now
+				// for i=0; i<population; ++i; { add sequential data }
+				var trE;
+				var tdC;
+				for (var i = 0; i < population; ++i) {
+					trE = document.createElement("tr");
+					for (var j = 0; j < 5; ++j) {
+						tdC = document.createElement("td");
+						tdC.textContent = Math.floor(Math.random()  * (7 - 1)) + 1;		
+						trE.appendChild(tdC);
+						popTbody[0]
+					}
+				}
+			}
+		</script>
 	</body>
 </html>
